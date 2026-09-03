@@ -52,7 +52,17 @@ claude plugin validate .
 
 echo "✅ 版本更新完成: $NEW_VERSION"
 echo ""
+
+# 自动提交和推送
+echo "提交更改..."
+git add .
+git commit -m "chore: bump version to $NEW_VERSION"
+
+echo "推送到 GitHub..."
+git push origin main
+
+echo ""
+echo "✅ 已推送到 main 分支"
+echo ""
 echo "后续步骤:"
-echo "  1. 提交更改: git add . && git commit -m 'chore: bump version to $NEW_VERSION'"
-echo "  2. 推送到 GitHub: git push origin main"
-echo "  3. 打 tag: cd $PLUGIN_DIR && claude plugin tag . && git push --tags"
+echo "  打 tag: cd $PLUGIN_DIR && claude plugin tag . && git push --tags"
