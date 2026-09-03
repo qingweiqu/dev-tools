@@ -1,100 +1,93 @@
-# dev-tools
+# Dev Tools Marketplace
 
-AI 开发工具 —— 一个 Claude Code plugin marketplace。
+AI 开发工具 marketplace，收录个人自用的 Claude Code 插件。
 
 ## 安装
 
-在 Claude Code 里执行，`owner/repo` 简写会从 GitHub 拉取本仓库的默认分支：
-
-```
+```bash
 /plugin marketplace add qingweiqu/dev-tools
 ```
 
-然后浏览并安装插件：
+或本地开发：
 
-```
-/plugin
-```
-
-也可以直接指定插件安装：
-
-```
-/plugin install example-plugin@dev-tools
-```
-
-## 更新
-
-本仓库有新提交后，已安装的用户执行：
-
-```
-/plugin marketplace update dev-tools
-```
-
-## 本地开发
-
-改插件时用绝对路径加载本地目录，免提交即时生效：
-
-```
+```bash
 /plugin marketplace add /Users/quqw/data/source_code/dev-tools
 ```
 
-注意本地路径和 GitHub 源不能同名共存，先 `/plugin marketplace remove dev-tools` 再切换。
-
 ## 插件列表
 
-| 插件 | 说明 |
-|------|------|
-| [example-plugin](plugins/example-plugin) | 示例插件模板，演示 commands、skills、agents 三类扩展的写法 |
-| [qqw-dev](plugins/qqw-dev) | 个人自用开发工具集，收录常用的 commands、skills 和 agents |
+| 插件 | 说明 | 版本 |
+|------|------|------|
+| [example-plugin](./plugins/example-plugin) | 示例插件模板，演示 commands、skills、agents 三类扩展的写法 | 0.1.0 |
+| [qqw-dev](./plugins/qqw-dev) | 个人自用开发工具集，收录常用的 commands、skills 和 agents | 0.1.0 |
 
-## 仓库结构
+## 更新插件
 
-```
-dev-tools/
-├── .claude-plugin/
-│   └── marketplace.json        # marketplace 清单，必需，路径固定
-├── plugins/
-│   └── example-plugin/         # 每个插件一个目录
-│       ├── .claude-plugin/
-│       │   └── plugin.json     # 插件清单，必需
-│       ├── commands/           # slash commands
-│       ├── skills/             # skills
-│       └── agents/             # subagents
-├── LICENSE
-└── README.md
-```
-
-## 添加新插件
-
-1. 在 `plugins/` 下建目录，参照 [example-plugin](plugins/example-plugin) 的结构
-2. 写 `.claude-plugin/plugin.json`，至少包含 `name` 和 `description`
-3. 在 `.claude-plugin/marketplace.json` 的 `plugins` 数组追加一条：
-
-```json
-{
-  "name": "your-plugin",
-  "description": "一句话说明这个插件做什么",
-  "source": "./plugins/your-plugin",
-  "category": "development"
-}
-```
-
-`source` 除了同仓库的相对路径，也支持外部仓库：
-
-```json
-"source": {
-  "source": "git-subdir",
-  "url": "https://github.com/owner/repo.git",
-  "path": "plugins/foo",
-  "ref": "main"
-}
-```
-
-## 校验
+用户端：
 
 ```bash
-claude plugin validate .
+/plugin marketplace update dev-tools
 ```
+
+## 开发指南
+
+### 版本管理
+
+使用 `scripts/bump-version.sh` 统一更新版本号：
+
+```bash
+# 更新插件版本和 marketplace 版本
+./scripts/bump-version.sh qqw-dev 0.2.0
+
+# 后续步骤（脚本会提示）
+git add .
+git commit -m "chore: bump version to 0.2.0"
+git push origin main
+
+# 可选：打 tag
+cd plugins/qqw-dev
+claude plugin tag .
+git push --tags
+```
+
+### 命令调用
+
+插件中的命令需要带命名空间调用：
+
+```bash
+/qqw-dev:commit      # 创建 git commit
+```
+
+Claude Code 目前**不支持命令别名**，无法简化为 `/commit`。
+
+### 发布流程
+
+1. 修改插件代码
+2. 更新版本号（使用 `bump-version.sh`）
+3. 验证清单：`claude plugin validate .`
+4. 推送到 main 分支（= 发布）
+5. 用户执行 `/plugin marketplace update dev-tools` 获取更新
+
+### 常用命令
+
+```bash
+# 验证 marketplace 清单
+claude plugin validate .
+
+# 验证单个插件
+claude plugin validate ./plugins/<plugin-name>
+
+# 查看插件详情
+claude plugin details <plugin-name>
+
+# 为插件打 tag
+cd plugins/<plugin-name>
+claude plugin tag .
+```
+
+## 插件开发
+
+参考 [plugins/example-plugin](./plugins/example-plugin) 模板，或查看项目根目录的 [CLAUDE.md](./CLAUDE.md)。
 
 ## License
 
