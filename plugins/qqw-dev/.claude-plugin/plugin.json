@@ -1,0 +1,15 @@
+{
+  "name": "qqw-dev",
+  "version": "0.1.0",
+  "description": "个人自用开发工具集，收录常用的 commands、skills 和 agents",
+  "author": {
+    "name": "qingweiqu"
+  },
+  "homepage": "https://github.com/qingweiqu/dev-tools/tree/main/plugins/qqw-dev",
+  "repository": "https://github.com/qingweiqu/dev-tools",
+  "license": "MIT",
+  "keywords": [
+    "development",
+    "productivity"
+  ]
+}

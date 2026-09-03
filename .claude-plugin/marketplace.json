@@ -19,6 +19,16 @@
       "category": "development",
       "source": "./plugins/example-plugin",
       "homepage": "https://github.com/qingweiqu/dev-tools/tree/main/plugins/example-plugin"
+    },
+    {
+      "name": "qqw-dev",
+      "description": "个人自用开发工具集，收录常用的 commands、skills 和 agents",
+      "author": {
+        "name": "qingweiqu"
+      },
+      "category": "development",
+      "source": "./plugins/qqw-dev",
+      "homepage": "https://github.com/qingweiqu/dev-tools/tree/main/plugins/qqw-dev"
     }
   ]
 }

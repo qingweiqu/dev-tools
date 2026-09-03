@@ -45,6 +45,7 @@ AI 开发工具 —— 一个 Claude Code plugin marketplace。
 | 插件 | 说明 |
 |------|------|
 | [example-plugin](plugins/example-plugin) | 示例插件模板，演示 commands、skills、agents 三类扩展的写法 |
+| [qqw-dev](plugins/qqw-dev) | 个人自用开发工具集，收录常用的 commands、skills 和 agents |
 
 ## 仓库结构
 
