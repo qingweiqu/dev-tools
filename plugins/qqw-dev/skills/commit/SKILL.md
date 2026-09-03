@@ -1,6 +1,8 @@
 ---
+name: commit
+description: 当用户要求创建 git commit、提交代码、生成 commit message 时使用。触发词：commit、提交、git commit、生成提交信息、创建 commit
+disable-model-invocation: true
 allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git diff:*), Bash(git log:*), Bash(git branch:*)
-description: Create a git commit
 ---
 
 ## Context

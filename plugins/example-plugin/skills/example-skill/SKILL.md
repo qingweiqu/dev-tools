@@ -1,6 +1,7 @@
 ---
 name: example-skill
 description: 当用户提到"写一个 skill"、"skill 模板"、"skill 怎么写"，或需要了解 Claude Code 插件中 skill 的结构和 frontmatter 写法时使用。提供 skill 的参考模板。
+disable-model-invocation: true
 version: 0.1.0
 ---
 
