@@ -1,0 +1,16 @@
+{
+  "name": "example-plugin",
+  "version": "0.1.0",
+  "description": "示例插件模板，演示 commands、skills、agents 三类扩展的写法",
+  "author": {
+    "name": "qingweiqu"
+  },
+  "homepage": "https://github.com/qingweiqu/dev-tools/tree/main/plugins/example-plugin",
+  "repository": "https://github.com/qingweiqu/dev-tools",
+  "license": "MIT",
+  "keywords": [
+    "example",
+    "template",
+    "development"
+  ]
+}

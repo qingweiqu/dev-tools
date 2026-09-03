@@ -1,0 +1,24 @@
+{
+  "$schema": "https://anthropic.com/claude-code/marketplace.schema.json",
+  "name": "dev-tools",
+  "owner": {
+    "name": "qingweiqu",
+    "url": "https://github.com/qingweiqu"
+  },
+  "metadata": {
+    "description": "AI 开发工具 marketplace，收录自用的 Claude Code 插件",
+    "version": "0.1.0"
+  },
+  "plugins": [
+    {
+      "name": "example-plugin",
+      "description": "示例插件模板，演示 commands、skills、agents 三类扩展的写法，可直接复制改造成新插件",
+      "author": {
+        "name": "qingweiqu"
+      },
+      "category": "development",
+      "source": "./plugins/example-plugin",
+      "homepage": "https://github.com/qingweiqu/dev-tools/tree/main/plugins/example-plugin"
+    }
+  ]
+}
