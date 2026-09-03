@@ -18,8 +18,7 @@ AI 开发工具 marketplace，收录个人自用的 Claude Code 插件。
 
 | 插件 | 说明 | 版本 |
 |------|------|------|
-| [example-plugin](./plugins/example-plugin) | 示例插件模板，演示 commands、skills、agents 三类扩展的写法 | 0.1.0 |
-| [qqw-dev](./plugins/qqw-dev) | 个人自用开发工具集，收录常用的 commands、skills 和 agents | 0.1.0 |
+| [qqw-dev](./plugins/qqw-dev) | 个人自用开发工具集，收录常用的 commands、skills 和 agents | 0.2.0 |
 
 ## 更新插件
 
@@ -87,7 +86,7 @@ claude plugin tag .
 
 ## 插件开发
 
-参考 [plugins/example-plugin](./plugins/example-plugin) 模板，或查看项目根目录的 [CLAUDE.md](./CLAUDE.md)。
+参考现有插件 [plugins/qqw-dev](./plugins/qqw-dev) 的结构，或查看项目根目录的 [CLAUDE.md](./CLAUDE.md)。
 
 ## License
 

@@ -54,13 +54,11 @@ marketplace 清单里的 `source` 对同仓库插件用相对路径（`./plugins
 
 skill 的 `description` 是它唯一的触发依据，必须写进用户可能说出的具体短语和关键词，而不是泛泛描述功能；不同 skill 的触发条件不要重叠。篇幅长的内容拆到 skill 目录下的 `references/` 按需加载，避免一次性占满上下文。
 
-`plugins/example-plugin/` 是可复制的模板，三类示例文件里都注明了各 frontmatter 字段的含义。
-
 ## 新增插件的步骤
 
-1. 复制 `plugins/example-plugin/` 为新目录
-2. 改 `.claude-plugin/plugin.json` 的 `name`（须与目录名一致）、`description`、`version`
-3. 删掉不用的示例文件，写自己的 command / skill / agent
+1. 在 `plugins/` 下新建目录，照 `plugins/qqw-dev/` 的结构建 `.claude-plugin/plugin.json`
+2. `plugin.json` 的 `name` 须与目录名一致，另填 `description`、`version`
+3. 按上表把 command / skill / agent 放进对应目录
 4. 在 `.claude-plugin/marketplace.json` 的 `plugins` 数组追加一条，`source` 指向新目录
 5. 跑 `claude plugin validate .` 确认清单合法
 6. 更新根 README.md 的插件列表表格

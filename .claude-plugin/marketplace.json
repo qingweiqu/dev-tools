@@ -11,16 +11,6 @@
   },
   "plugins": [
     {
-      "name": "example-plugin",
-      "description": "示例插件模板，演示 commands、skills、agents 三类扩展的写法，可直接复制改造成新插件",
-      "author": {
-        "name": "qingweiqu"
-      },
-      "category": "development",
-      "source": "./plugins/example-plugin",
-      "homepage": "https://github.com/qingweiqu/dev-tools/tree/main/plugins/example-plugin"
-    },
-    {
       "name": "qqw-dev",
       "description": "个人自用开发工具集，收录常用的 commands、skills 和 agents",
       "author": {
