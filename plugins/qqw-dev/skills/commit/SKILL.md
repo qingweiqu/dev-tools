@@ -1,8 +1,10 @@
 ---
 name: commit
 description: 当用户要求创建 git commit、提交代码、生成 commit message 时使用。触发词：commit、提交、git commit、生成提交信息、创建 commit
+argument-hint: [optional: commit message]
 disable-model-invocation: true
 allowed-tools: Bash(git add:*), Bash(git status:*), Bash(git commit:*), Bash(git diff:*), Bash(git log:*), Bash(git branch:*)
+model: haiku
 ---
 
 ## Context
@@ -20,6 +22,7 @@ Follow Conventional Commits:
 <type>(<scope>): <subject>
 
 [optional body]
+
 
 [optional footer(s)]
 ```
@@ -67,6 +70,31 @@ Closes #123
 
 ## Your task
 
-Based on the above changes, create a single git commit following the convention above.
+Create a git commit with the changes shown above.
 
-You have the capability to call multiple tools in a single response. Stage and create the commit using a single message. Do not use any other tools or do anything else. Do not send any other text or messages besides these tool calls.
+**If a commit message is provided** (`$ARGUMENTS` is not empty):
+- Use `$ARGUMENTS` as the commit message exactly as provided
+
+**If no message is provided** (`$ARGUMENTS` is empty):
+- Analyze the changes from the git diff
+- Generate a concise, meaningful commit message following the Conventional Commits convention above
+- The message should clearly describe what changed and why
+
+## Steps
+
+1. Check `git status` to see current state
+2. If nothing is staged, run `git add .` to stage all changes
+3. Review what will be committed with `git diff --staged`
+4. Create the commit:
+   - If `$ARGUMENTS` is provided, use it as the commit message
+   - Otherwise, generate a commit message based on the diff following the convention above
+5. Show the commit result
+
+## Output
+
+Show a brief confirmation with the commit message and files changed:
+
+```
+✓ Committed: [commit message]
+  [number] files changed
+```
